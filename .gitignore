@@ -4,3 +4,4 @@ cascade/
 data/
 *.xml
 samples/
+*.DS_Store
