@@ -14,7 +14,9 @@ def detect_vehicle(frame):
         crop_img = frame[y:y+h, x:x+w]
         dst = cv2.detailEnhance(crop_img, 10, 1.5)
         cv2.imshow('vehicle', dst)
-        detect_plate(dst)
+        if cv2.waitKey(0) & 0xff == ord('q'):
+            pass
+        # detect_plate(dst)
 
 
 def detect_plate(frame):
@@ -23,17 +25,18 @@ def detect_plate(frame):
         cv2.rectangle(frame, (x, y), (x+w, y+h),
                       color=(0, 255, 0), thickness=2)
         crop_img = frame[y:y+h, x:x+w]
+        # cv2.imwrite('samples/img.png', crop_img)
         super_resolution(crop_img)
 
 
 def super_resolution(frame):
-    # https://www.pyimagesearch.com/2020/11/09/opencv-super-resolution-with-deep-learning/
-    # modelName = frame.split(os.path.sep)[-1].split("_")[0].lower()
-    modelName = frame.split(os.path.sep)
-    modelScale = frame.split("_x")[-1]
-    modelScale = int(modelScale[:modelScale.find(".")])
-    print("[INFO] model name: {}".format(modelName))
-    print("[INFO] model scale: {}".format(modelScale))
+    # sr = cv2.dnn_superres.DnnSuperResImpl_create()
+    # path = "samples/img.png"
+    # sr.readModel(path)
+    # sr.setModel("edsr", 4)
+    # print(sr)
+    # result = sr.upsample(frame)
+    # resized = cv2.resize(result, dsize=None, fx=4, fy=4)
 
     cv2.imshow('vehicle plate', frame)
     if cv2.waitKey(0) & 0xff == ord('q'):

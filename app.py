@@ -1,4 +1,4 @@
-from prepare import detect_vehicle
+from prepare import detect_vehicle, super_resolution
 import cv2
 
 
@@ -21,3 +21,4 @@ def Simulator():
 
 if __name__ == '__main__':
     Simulator()
+    # super_resolution()
