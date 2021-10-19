@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup as bs
 from time import sleep
 import requests
 
+# https://towardsdatascience.com/how-to-build-a-dataset-for-an-image-classifier-from-scratch-d2506e30468d
+
 url_toscrap = "https://turo.com/ca/en-us/car-rental/montreal-qc/ford/mustang/702436?searchId=OD83L624"
 
 # Define the driver
@@ -11,10 +13,6 @@ driver = webdriver.Chrome(ChromeDriverManager().install())
 
 # Access the url of the page to scrap
 driver.get(url_toscrap)
-
-# Collect all the informations on the page
-source_data = driver.page_source
-soup = bs(source_data, features="html.parser")
 
 # Collect all the informations on the page
 source_data = driver.page_source
